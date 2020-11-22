@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Author: Hannah Rausch
+    Project: MatchmakerWeb
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Matchmaker Web</title>
+    <link rel='stylesheet' href='index.css'>
+</head>
+
+<body>
+    <h1>Matchmaker Web</h1>
+    <h2>Instructions...</h2>
+    <p>The purpose of this application is to see how 
+        compatable we are. The instructions are simple:
+        After each statement, you will be prompted to 
+        select an option from a dropdown menu. Once you've gotten through all 5 statements, you'll learn your compatability! The goal is 
+        100%!</p>
+
+    <label>Chicago Blackhawks hockey is the best!</label><br />
+    <select id="q1">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select><br /><br />
+
+    <label>Superman is the best superhero!</label><br />
+    <select id="q2">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Spaghetti is the best food on Earth!</label><br />
+    <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />  
+
+    <label>The best book series is The Witcher series!</label><br />
+    <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+    
+    <label>JoJos Bizarre Adventure is the greatest anime!</label><br />
+    <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+
+    <br /><br /><br />
+    <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+    <p id="compatibility"></p>
+
+    <p id="message"></p>
+
+<script>
+console.log("Starting Matchmaker Web...");
+
+function calculateCompatibility() {
+    console.log("calculateCompatibility()");
+
+    const DESIRED_RESPONSE = [
+        5,
+        2,
+        1, 
+        4, 
+        5
+    ];
+
+    const QUESTION_WEIGHT = [
+        0.3,
+        0.02,
+        0.01,
+        0.22,
+        0.45
+    ];
+
+    const MAX_SCORE = 5;
+
+    let question1Response = document.getElementById('q1').selectedOptions[0].value;
+    let question2Response = document.getElementById('q2').selectedOptions[0].value;
+    let question3Response = document.getElementById('q3').selectedOptions[0].value;
+    let question4Response = document.getElementById('q4').selectedOptions[0].value;
+    let question5Response = document.getElementById('q5').selectedOptions[0].value;
+
+    console.log("Question 1 Response: "+question1Response);
+
+    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
+
+    console.log("c1=" +question1Compatibility);
+    console.log("c2=" +question2Compatibility);
+    console.log("c3=" +question3Compatibility);
+    console.log("c4=" +question4Compatibility);
+    console.log("c5=" +question5Compatibility);
+
+    // Total Compatibility Score
+    // let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
+
+    // Weighted Compatibility Score
+    let totalWeightedCompatibility = (question1Compatibility*QUESTION_WEIGHT[0]) + (question2Compatibility*QUESTION_WEIGHT[1]) + (question3Compatibility*QUESTION_WEIGHT[2]) + (question4Compatibility*QUESTION_WEIGHT[3]) + (question5Compatibility*QUESTION_WEIGHT[4]);
+
+    // Total Compatibility as Percentage
+    // totalCompatibility *= 100 / MAX_SCORE;
+    // totalCompatibility = Math.round(totalCompatibility);
+    // console.log("totalCompatibility=" +totalCompatibility);
+
+    // Weighted Compatibility Score as Percentage
+    totalWeightedCompatibility *= 100 / MAX_SCORE;
+    totalWeightedCompatibility = Math.round(totalWeightedCompatibility);
+    console.log("totalWeightedCompatibility=" +totalWeightedCompatibility);
+
+    document.getElementById("compatibility").innerHTML = "Your compatibility is... " +totalWeightedCompatibility+ "%";
+}
+
+</script>
+
+</body>
+</html>

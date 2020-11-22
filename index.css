@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Aladin');
+@import url('https://fonts.googleapis.com/css?family=Concert One');
+@import url('https://fonts.googleapis.com/css?family=Englebert');
+
+body {
+    background-color: #ffdedb;
+}
+
+h1 {
+    font-family: 'Aladin';
+    color: #d10e00;
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: -10px;
+}
+
+h2 {
+    font-family: 'Concert One';
+    color: #db0f00;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: -20px;
+}
+
+p {
+    font-family: 'Englebert';
+    color: #db0f00;
+    text-align: center;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+label {
+    font-family: 'Englebert';
+    color: #db0f00;
+    text-align: center;
+    font-size: 25px;
+}
+
+select {
+    font-family: 'Englebert';
+    color: #db0f00;
+    font-size: 20px;
+}
+
+button {
+    background-color: #db0f00;
+    font-family: 'Englebert';
+    color: #ffdedb;
+    font-size: 20px;
+}
